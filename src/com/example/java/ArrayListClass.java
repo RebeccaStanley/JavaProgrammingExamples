@@ -82,7 +82,7 @@ public abstract class ArrayListClass<T> implements ArrayListADT<T>, Cloneable {
                 "be compared is out of range.");
             return false;
         }
-
+        return (list[location].equals(item));
     }
 
     public abstract void insertAt(int location, T insertItem);
@@ -90,19 +90,37 @@ public abstract class ArrayListClass<T> implements ArrayListADT<T>, Cloneable {
     public abstract void insertEnd(T insertItem);
 
     public void removeAt(int location){
-
+        if (location < 0 || location >= length){
+            System.err.println("The location of the item to " +
+                    "be removed is out of range.");
+        }else{
+            for (int i= location; i < length -1; i++){
+                list[i] = list[i + 1]; //shift the values
+            }
+            list[length - 1] = null;
+            length--;
+        }
     }
 
     public T retrieveAt(int location){
-
+        if (location < 0 || location >= length){
+            System.err.println("The location of the item to be "
+                 + "retrieved is out of range.");
+            return null;
+        }else{
+            return list[location];
+        }
     }
 
     public abstract void replaceAt(int location, T repItem);
 
     public void clearList(){
+        for (int i = 0; i < length; i++){
+            list[i] = null;
+        }
+        length = 0;
 
-
-
+        System.gc();
     }
 
     public abstract int seqSearch(T searchItem);
