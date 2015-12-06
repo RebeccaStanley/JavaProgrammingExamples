@@ -77,6 +77,11 @@ public abstract class ArrayListClass<T> implements ArrayListADT<T>, Cloneable {
     }
 
     public boolean isItemAtEqual(int location, T item){
+        if (location < 0 || location >= length){
+            System.err.println("The location of the item to " +
+                "be compared is out of range.");
+            return false;
+        }
 
     }
 

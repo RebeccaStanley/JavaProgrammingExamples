@@ -62,7 +62,7 @@ public interface ArrayListADT<T> extends Cloneable{
      * of the list is incremented by 1. If the list is full or location is out of range, an appropriate
      * message is output and false is returned.
      */
-    public boolean insertAt(int location, T insertItem);
+    public void insertAt(int location, T insertItem);
 
     /**
      * Method to insert insertItem at the end of the list
