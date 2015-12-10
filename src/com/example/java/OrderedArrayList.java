@@ -1,5 +1,7 @@
 package com.example.java;
 
+import java.util.Scanner;
+
 /**
  * Class derived from ArrayListClass implementing methods to deal with
  * search, insert, remove for unordered array
@@ -151,5 +153,42 @@ public class OrderedArrayList<T> extends ArrayListClass<T>{
 
     }
 
+    public int binarySearch(T searchItem){
+        SearchSortAlgorithms<T> searchObject = new SearchSortAlgorithms<T>();
+
+        return searchObject.binarySearch(list, length, searchItem);
+    }
+
+    //TEST
+    public static void main(String args[]){
+        Scanner console= new Scanner(System.in);
+
+        OrderedArrayList<Integer> intList = new OrderedArrayList<Integer>();
+        Integer num;
+        System.out.print("Enter 8 integers: ");
+
+        for (int count = 0; count < 8; count++){
+            num = console.nextInt();
+            intList.insert(num);
+        }
+
+        System.out.println();
+        System.out.println("intList: ");
+        intList.print();
+
+        System.out.print("Enter the search item: ");
+        num = console.nextInt();
+        System.out.println();
+
+        int pos;
+
+        pos = intList.binarySearch(num);
+
+        if (pos != -1){
+            System.out.println(num + " found at position " + pos);
+        }else{
+            System.out.println(num + " is not in intList");
+        }
+    }
 
 }
